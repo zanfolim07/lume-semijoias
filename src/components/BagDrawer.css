@@ -1,0 +1,216 @@
+.bag {
+  width: min(440px, 100%);
+  max-width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  color: var(--ink);
+  overflow: hidden;
+  box-shadow: -30px 0 80px -40px rgba(0, 0, 0, 0.5);
+}
+.bag::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+}
+.bag[open] {
+  animation: bag-in 0.5s var(--ease);
+}
+.bag[open]::backdrop {
+  animation: fade-in 0.35s ease;
+}
+@keyframes bag-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+.bag__panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.bag__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.bag__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.bag__count {
+  display: grid;
+  place-items: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--beige);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.bag__close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  transition: background-color 0.3s;
+}
+.bag__close:hover {
+  background: var(--line);
+}
+
+.bag__empty {
+  flex: 1;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.bag__list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 1.5rem;
+}
+.bag__item {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+  animation: bag-item-in 0.45s var(--ease) both;
+}
+.bag__item:last-child {
+  border-bottom: 0;
+}
+@keyframes bag-item-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+.bag__item img {
+  width: 84px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+.bag__item-info {
+  display: flex;
+  flex-direction: column;
+}
+.bag__item-name {
+  font-weight: 500;
+  line-height: 1.3;
+}
+.bag__item-price {
+  margin-top: 0.2rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.bag__item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.6rem;
+}
+.bag__qty {
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.bag__qty button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background-color 0.25s;
+}
+.bag__qty button:hover {
+  background: var(--surface-2);
+}
+.bag__qty span {
+  min-width: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.bag__remove {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--ink-soft);
+  transition: background-color 0.25s, color 0.25s;
+}
+.bag__remove:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.bag__footer {
+  padding: 1.25rem 1.5rem calc(1.25rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+.bag__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+.bag__total strong {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.bag__installments {
+  margin-bottom: 1rem;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.bag__note {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 560px) {
+  .bag {
+    width: 100%;
+    height: 88dvh;
+    margin: auto 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .bag[open] {
+    animation-name: bag-up;
+  }
+}
+@keyframes bag-up {
+  from {
+    transform: translateY(100%);
+  }
+}

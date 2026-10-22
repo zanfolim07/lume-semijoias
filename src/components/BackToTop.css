@@ -1,0 +1,53 @@
+.back-to-top {
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 2rem);
+  bottom: calc(clamp(1rem, 2.5vw, 2rem) + env(safe-area-inset-bottom));
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(14px) scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), background-color 0.3s, color 0.3s;
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--beige);
+  color: var(--ink);
+}
+.back-to-top:hover .back-to-top__ring {
+  opacity: 0;
+}
+.back-to-top__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  transition: opacity 0.3s;
+}
+.back-to-top__track,
+.back-to-top__progress {
+  fill: none;
+  stroke-width: 2;
+}
+.back-to-top__track {
+  stroke: var(--line);
+}
+.back-to-top__progress {
+  stroke: var(--beige);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.15s linear;
+}

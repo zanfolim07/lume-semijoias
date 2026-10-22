@@ -1,0 +1,99 @@
+.contact {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(520px, 72vh, 680px);
+  overflow: hidden;
+  background: var(--dark);
+  color: #fff;
+  isolation: isolate;
+}
+.contact__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 75% 40%;
+  z-index: -2;
+}
+.contact::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.05) 75%);
+}
+.contact__content {
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+.contact__content > * {
+  max-width: 34rem;
+}
+.contact__content > .contact__title {
+  max-width: 44rem;
+}
+.contact__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+.contact__title {
+  margin-top: 0.9rem;
+  font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+.contact__accent {
+  display: block;
+  color: var(--beige);
+}
+.contact__text {
+  margin-top: 1.25rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+}
+.contact__actions {
+  margin-top: 2rem;
+}
+.contact__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.contact__topics a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+.contact__topics a:hover {
+  background: var(--beige);
+  border-color: var(--beige);
+  color: var(--ink);
+}
+.contact :focus-visible {
+  outline-color: #fff;
+}
+
+@media (max-width: 700px) {
+  .contact {
+    align-items: flex-end;
+    min-height: 640px;
+  }
+  .contact__image {
+    object-position: 50% 30%;
+  }
+  .contact::after {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.72) 55%, rgba(0, 0, 0, 0.15) 90%);
+  }
+}
