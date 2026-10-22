@@ -83,7 +83,3 @@ src/
 ├── utils/        WhatsApp, formatação de preço e galeria
 └── styles/       global.css: tokens, botões e utilitários
 ```
-
-## Publicação
-
-Pronto para a [Vercel](https://vercel.com): importe o repositório e ela reconhece o Vite sozinha. A prévia de compartilhamento usa o domínio de produção automaticamente; em outra hospedagem, defina `SITE_URL` (veja `.env.example`). O `vercel.json` configura o cache das fotos.
